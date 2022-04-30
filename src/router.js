@@ -4,33 +4,45 @@ import viewChart from './components/viewChart.vue';
 import myPage from './components/myPage.vue';
 import myPageDetail from './components/myPageDetail.vue';
 import doLogin from './components/doLogin.vue';
+import ViewHeader from './components/ViewHeader.vue';
 
 const routes = [
   {
     path: "/",
-    component: viewChart,
+    components: {
+      default: viewChart,
+      header: ViewHeader
+    },
     props: true
   },
   {
     path: "/search",
-    component: doSearch,
+    components: {
+      default: doSearch,
+      header: ViewHeader
+    },
     props: true
   },
   {
     path: "/myPage",
-    component: myPage,
-    children : [
-        { path : '/myPage',
-         component : myPageDetail
-        }
+    components: {
+      default: myPage,
+      header: ViewHeader
+    },
+    children: [
+      {
+        path: '/myPage',
+        component: myPageDetail
+      }
     ]
   },
   {
     path: "/login",
     component: doLogin,
-    props: true
+    props: true,
   },
 ];
+
 
 const router = createRouter({
   history: createWebHistory(),
