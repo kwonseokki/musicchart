@@ -1,7 +1,7 @@
 <template>
 
 <router-view name="header"></router-view>
-<router-view></router-view>
+<router-view :limit="limit"></router-view>
 
 
 </template>
@@ -14,7 +14,7 @@ export default {
   name: 'App',
   data() {
     return {
-     
+     limit:10
     }
   },
   components: {
