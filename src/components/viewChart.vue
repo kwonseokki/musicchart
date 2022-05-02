@@ -18,6 +18,7 @@
 
 
  <div class="container" >
+
       <h3 class="mb-5" style="text-align:left">해외노래 TOP{{limit}}🎙</h3>
   <select class="form-select" aria-label="Default select example" style="width:120px" @change="changeList($event);">
   <option value="10">TOP10</option>
@@ -59,9 +60,9 @@
               <td class="track_img">{{getChartData[y].name}}<br/><span style="font-size:0.8rem; color:lightgray">-{{getChartData[y].artist.name}}-</span></td>
               <td>
                
-                <small class="d-block">{{getChartData[y].playcount}}</small>
+                <small class="d-block">{{regularNum(getChartData[y].playcount)}}</small>
               </td>
-              <td>{{getChartData[y].listeners}}</td>
+              <td>{{regularNum(getChartData[y].listeners)}}</td>
               <td>
             
               </td>
@@ -91,15 +92,23 @@ export default {
             getChartData : [],
             modal : false,
             clikIdx : 0,
-           limit : 100
+           limit : 100,
+          
         }
+    },
+    computed : {
+      regularNum() {
+        return (params) => {
+          return params.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+        }
+      }
     },
    
       mounted() {
       
       axios.get(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&limit=${this.limit}&api_key=${apiKey}&format=json`)
       .then(res=> { 
-      this.getChartData = res.data.tracks.track
+      this.getChartData = res.data.tracks.track;
       })
       .catch(err => {
         console.log(err);
