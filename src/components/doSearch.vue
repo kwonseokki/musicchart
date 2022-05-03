@@ -1,7 +1,12 @@
 <template>
-
-  <input type="text" @input="searchKeyword = $event.target.value">
-  <input type="submit" value="test검색" @click="doSearch">
+<div class="container" >
+<div class=" top100 input-group mb-3">
+  <input type="text" class="form-control" @input="searchKeyword = $event.target.value" placeholder="음악을 검색해주세요" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" @click="doSearch">검색</button>
+  </div>
+</div>
+</div>
   
   <div v-for="(x,y) in getSearchData" :key="y" >
   
