@@ -5,7 +5,7 @@ import myPage from './components/myPage.vue';
 import myPageDetail from './components/myPageDetail.vue';
 import doLogin from './components/doLogin.vue';
 import ViewHeader from './components/ViewHeader.vue';
-
+import doRegister from './components/doRegister.vue'
 const routes = [
   {
     path: "/",
@@ -41,6 +41,10 @@ const routes = [
     component: doLogin,
     props: true,
   },
+  {
+    path: "/register",
+    component: doRegister,
+  }
 ];
 
 
