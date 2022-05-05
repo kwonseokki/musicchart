@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "emul": "firebase emulators:start"
+    "emul":"firebase emulators:start"
   },
   "dependencies": {
     "axios": "^0.27.2",
