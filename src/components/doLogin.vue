@@ -17,12 +17,41 @@
     <label class="form-check-label" for="exampleCheck1">로그인 기억</label>
   </div>
   <button type="submit" class="login-btn btn btn-primary radius20" :class="{activeBtn : loginActive==true}" @click="$router.push('/');">로그인</button><br/>
-  <div class="top10" style="cursor:pointer" @click="$router.push('./register')">회원가입</div>
+    <div class="top10" style="cursor:pointer" @click="googleSignIn">gmail 시작하기</div>
 </form>
 </div>
 </template>
 
 <script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAjJIEnFanTQPt5iw5abjpQx8DleeevnwM",
+  authDomain: "musicchart-7be4a.firebaseapp.com",
+  databaseURL: "https://musicchart-7be4a-default-rtdb.firebaseio.com",
+  projectId: "musicchart-7be4a",
+  storageBucket: "musicchart-7be4a.appspot.com",
+  messagingSenderId: "416789536358",
+  appId: "1:416789536358:web:70856c98408e320b1d97a7",
+  measurementId: "G-6LBVL257J2"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/auth';
+
+
+
 export default {
     name : 'doLogin',
     data() {
@@ -37,6 +66,12 @@ export default {
     props : {
         loginMode : Boolean
     },
+     created() {
+        firebase.initializeApp(firebaseConfig);
+    },
+    mounted() {
+       
+    },
     methods : {
          lengthCheck : function() {
        if(this.idLength.length >= 8) {
@@ -47,10 +82,19 @@ export default {
            }
        }
     },
-    },
-    mounted() {
-        
-    },
+     async googleSignIn() {
+                console.log("login");
+            const provider = new firebase.auth.GoogleAuthProvider();
+            provider.setCustomParameters({
+                prompt: "select_account",
+            });
+            const profile = await firebase.auth().signInWithPopup(provider);
+            console.log(profile);
+
+        },
+    }, 
+
+
 }
 
 </script>
