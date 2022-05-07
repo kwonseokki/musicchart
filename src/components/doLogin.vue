@@ -18,12 +18,17 @@
   </div>
   <button type="submit" class="login-btn btn btn-primary radius20" :class="{activeBtn : loginActive==true}" @click="$router.push('/');">로그인</button><br/>
     <div class="top10" style="cursor:pointer" @click="googleSignIn">gmail 시작하기</div>
+    
 </form>
 </div>
 </template>
 
 <script>
 // Import the functions you need from the SDKs you need
+
+
+import firebase from 'firebase/compat/app'; 
+import 'firebase/compat/auth';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
@@ -47,8 +52,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-import firebase from 'firebase/compat/app'; 
-import 'firebase/compat/auth';
 
 
 
@@ -60,7 +63,6 @@ export default {
         pwLength : "",
         loginInfo : ["", ""],
         loginActive : false,
-        
         }
     },
     props : {
@@ -90,8 +92,15 @@ export default {
             });
             const profile = await firebase.auth().signInWithPopup(provider);
             console.log(profile);
-
+           console.log(profile.credential.accessToken);
+             window.$cookies.set("accesToken", profile.credential.accessToken);
+             localStorage.setItem("userInfo", JSON.stringify(profile.additionalUserInfo.profile));
+             this.$emit("login", true)
+             this.$router.push('/')
+            //  window.location.href='/'
         },
+        
+        
     }, 
 
 

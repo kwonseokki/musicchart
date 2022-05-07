@@ -31,9 +31,6 @@
      </ul>
    </div> -->
  <div class="container" >
-
-
-
       <h3 class="mb-5 top100" style="text-align:left">해외노래 TOP{{limit}}🎙</h3>
   <select class="form-select radius20" aria-label="Default select example" style="width:120px" @change="changeList($event);">
   <option value="10">TOP10</option>

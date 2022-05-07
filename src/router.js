@@ -11,7 +11,8 @@ const routes = [
     path: "/",
     components: {
       default: viewChart,
-      header: ViewHeader
+      header: ViewHeader,
+      
     },
     props: true
   },
@@ -25,14 +26,16 @@ const routes = [
   },
   {
     path: "/myPage",
+    props: true,
     components: {
       default: myPage,
-      header: ViewHeader
+      header: ViewHeader,
     },
     children: [
       {
         path: '/myPage',
-        component: myPageDetail
+        component: myPageDetail,
+        props: true,
       }
     ]
   },

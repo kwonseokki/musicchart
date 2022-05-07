@@ -1,7 +1,9 @@
 <template>
   마이페이지 나올곳
     <div v-if="loginStatus == true">
-  <router-view></router-view>
+      <img :src="userInfo.picture" alt=""><br/>
+      name : {{userInfo.name}}<br/>
+      verified : {{userInfo.verified_email}}
 </div>
 <div v-if="loginStatus == false">
     로그인이 필요한 페이지 입니다.
@@ -13,8 +15,12 @@ export default {
     name : 'myPage',
     data() {
         return {
-            loginStatus : false
+            loginStatus : false,
         }
+    },
+    props : {
+      loginStatus : Boolean,
+      userInfo : Object
     }
 }
 </script>

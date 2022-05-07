@@ -1,31 +1,40 @@
 <template>
 
-<router-view name="header"></router-view>
-<router-view :limit="limit"></router-view>
-
+<router-view name="header"  :loginStatus="loginStatus" :userInfo="userInfo" @logOut="loginStatus=false"></router-view>
+<router-view :loginStatus="loginStatus"  @login="loginStatus=true" :userInfo="userInfo"></router-view>
 
 </template>
 
 <script>
-
-
+import ViewHeader from './components/ViewHeader.vue'
+import myPage from './components/myPage.vue'
 export default {
-  
   name: 'App',
   data() {
     return {
-     limit:10
+     limit:10,
+     loginStatus:false,
+     userInfo : JSON.parse(localStorage.getItem("userInfo")),
+     
     }
   },
   components: {
-    
+    ViewHeader,
+    myPage
   },
   methods : {
    
   },
    mounted() {
-     console.log(this.$firebase);
+    
+    
     },
+    created() {
+      if(window.$cookies.isKey("accesToken")) {
+        this.loginStatus=true
+        
+      }
+    }
 }
 
 </script>

@@ -12,18 +12,13 @@
       </div>
       <div class="offcanvas-body menu-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item" @click="toggleMenu">
-            <a class="nav-link active" aria-current="page" href="#" @click="$router.push('/')"> 차트</a>
-          </li>
-          <li class="nav-item" @click="toggleMenu">
-            <a class="nav-link" href="#" @click="$router.push('/search')">음악검색</a>
-          </li>
-             <li class="nav-item" @click="toggleMenu"> 
-            <a class="nav-link" href="#" @click="$router.push('/myPage')">마이페이지</a>
+          <li v-for="(x,y) in menuData" :key="y" class="nav-item" @click="toggleMenu">
+            <a class="nav-link active" aria-current="page" href="#" @click="$router.push(menuData[y].url)">{{menuData[y].name}}</a>
           </li>
           <div class="login-box">
            <li class="nav-item">
-            <a class="nav-link" href="#"    @click="this.$router.push({path:'/login'});">로그인</a>
+            <a v-if="loginStatus==false" class="nav-link" href="#"    @click="this.$router.push({path:'/login'});">로그인</a>
+            <div v-if="loginStatus==true"><span>{{userInfo.name}}님</span>|<span @click="logOut">로그아웃</span></div>
           </li>
           </div>
         </ul>
@@ -35,12 +30,12 @@
 </template>
 
 <script>
-
+import menuData from '@/assets/urls/menudata.js'
 export default {
     name : 'ViewHeader',
     data(){
         return {
-    
+          menuData : menuData,
         }
     },
     methods : {
@@ -50,7 +45,19 @@ export default {
             
             tabMenu.classList.remove("show");
             tabMenuOverlay.classList.remove("show");
+        },
+        logOut : function() {
+          window.$cookies.remove("accesToken");
+          this.$emit("logOut", false)
+           this.$router.push('/')
         }
+    },
+   computed : {
+     
+   },
+    props : {
+      loginStatus:Boolean,
+      userInfo:Object
     }
 
 }
