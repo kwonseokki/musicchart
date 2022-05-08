@@ -1,8 +1,8 @@
 <template>
-  마이페이지 나올곳
+  <h2 class="top100">마이페이지</h2>
     <div v-if="loginStatus == true">
-      <img :src="userInfo.picture" alt=""><br/>
-      name : {{userInfo.name}}<br/>
+      <img :src="userInfo.picture" alt="" class="user_picture_big top30"><br/><br/>
+      name : {{userInfo.name}}<br/><br/>
       verified : {{userInfo.verified_email}}
 </div>
 <div v-if="loginStatus == false">
@@ -26,5 +26,5 @@ export default {
 </script>
 
 <style>
-
+.user_picture_big {border-radius:50%;}
 </style>

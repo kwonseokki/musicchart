@@ -17,7 +17,7 @@
     <label class="form-check-label" for="exampleCheck1">로그인 기억</label>
   </div>
   <button type="submit" class="login-btn btn btn-primary radius20" :class="{activeBtn : loginActive==true}" @click="$router.push('/');">로그인</button><br/>
-    <div class="top10" style="cursor:pointer" @click="googleSignIn">gmail 시작하기</div>
+    <div class="top10 google-login-btn" style="cursor:pointer" @click="googleSignIn">gmail 시작하기</div>
     
 </form>
 </div>
@@ -93,7 +93,7 @@ export default {
             const profile = await firebase.auth().signInWithPopup(provider);
             console.log(profile);
            console.log(profile.credential.accessToken);
-             window.$cookies.set("accesToken", profile.credential.accessToken);
+             window.$cookies.set("accesToken", profile.credential.accessToken, 60*40);
              localStorage.setItem("userInfo", JSON.stringify(profile.additionalUserInfo.profile));
              this.$emit("login", true)
              this.$router.push('/')
@@ -109,7 +109,6 @@ export default {
 </script>
 
 <style>
-
 .login-btn {pointer-events:none; background:#0040FF;}
 .login-btn.activeBtn {pointer-events:auto; background:#0D6EFD;}
 </style>

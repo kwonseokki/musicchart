@@ -9,9 +9,8 @@
 </div>
   <h3 class="result_keyword top60">{{resultKeyword}}</h3>
  <div v-for="(x,y) in getSearchData" :key="y">
-
     <ul style="list-style:none">
-      <li class="search_result">{{getSearchData[y].name}}</li>
+      <li class="search_result" @click="goSite(getSearchData[y].url)">{{getSearchData[y].name}}</li>
     </ul>
   </div>
 </div>
@@ -42,6 +41,7 @@ export default {
       .then(res=> { 
       this.getSearchData = res.data.results.trackmatches.track;
       this.resultKeyword = this.searchKeyword+"로 검색한 결과입니다.";
+      console.log(this.getSearchData);
       })
       .catch(err => {
         console.log(err);
@@ -49,13 +49,17 @@ export default {
       .then(function(){
         // 항상실행
       })
+    },
+    goSite : function(url) {
+      window.open(url, '_blank'); 
     }
   }
 }
 </script>
 
 <style>
-.search_result {text-align:left;}
+.search_result {text-align:left; cursor:pointer;}
+.search_result:hover {text-decoration:underline;}
 .result_keyword {text-align:left;}
 .button-border {border-radius:0 20px 20px 0; width:80px;}
 </style>

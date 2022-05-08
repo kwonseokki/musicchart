@@ -18,7 +18,7 @@
           <div class="login-box">
            <li class="nav-item">
             <a v-if="loginStatus==false" class="nav-link" href="#"    @click="this.$router.push({path:'/login'});">로그인</a>
-            <div v-if="loginStatus==true"><span>{{userInfo.name}}님</span>|<span @click="logOut">로그아웃</span></div>
+            <div v-if="loginStatus==true"><img :src="userInfo.picture" alt="" class="user_picture"><span>{{userInfo.name}}님</span>|<span @click="logOut">로그아웃</span></div>
           </li>
           </div>
         </ul>
@@ -64,5 +64,5 @@ export default {
 </script>
 
 <style>
-
+.user_picture {width:25px; height:25px; border-radius:50%;}
 </style>
