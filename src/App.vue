@@ -45,8 +45,10 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #fff;
+
+    background: linear-gradient(to bottom right, #121212,#282828);
+  min-height:100vh;
 }
 
 .menu-body {position:relative;}

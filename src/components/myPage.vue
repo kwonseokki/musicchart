@@ -1,5 +1,5 @@
 <template>
-  <h2 class="top100">마이페이지</h2>
+  <h2 class="top100-p">마이페이지</h2>
     <div v-if="loginStatus == true">
       <img :src="userInfo.picture" alt="" class="user_picture_big top30"><br/><br/>
       name : {{userInfo.name}}<br/><br/>

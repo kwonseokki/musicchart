@@ -1,25 +1,8 @@
 <template>
 <div class="col-md-4 mx-auto align-self-center top100 login-container">
   <img src="../assets/logo.png" alt="">
-  <form class="container mt-4">
-  <div class="mb-3 text-start">
-    <label for="exampleInputEmail1" class="form-label ">아이디</label>
-    <input type="text" class="form-control radius20" id="exampleInputEmail1" aria-describedby="emailHelp" v-model="idLength" @input="lengthCheck">
-    <div id="emailHelp" class="form-text" style="height:16px">{{loginInfo[0]}}</div>
-  </div>
-  <div class="mb-3 text-start">
-    <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-    <input type="password" class="form-control radius20" id="exampleInputPassword1" v-model="pwLength" @input="lengthCheck">
-    <div id="emailHelp" class="form-text" style="height:16px">{{loginInfo[1]}}</div>
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">로그인 기억</label>
-  </div>
-  <button type="submit" class="login-btn btn btn-primary radius20" :class="{activeBtn : loginActive==true}" @click="$router.push('/');">로그인</button><br/>
     <div class="top10 google-login-btn" style="cursor:pointer" @click="googleSignIn">gmail 시작하기</div>
-    
-</form>
+
 </div>
 </template>
 
@@ -95,8 +78,8 @@ export default {
            console.log(profile.credential.accessToken);
              window.$cookies.set("accesToken", profile.credential.accessToken, 60*40);
              localStorage.setItem("userInfo", JSON.stringify(profile.additionalUserInfo.profile));
-             this.$emit("login", true)
-             this.$router.push('/')
+             this.$emit("login", true);
+             this.$router.push('/');
             //  window.location.href='/'
         },
         
