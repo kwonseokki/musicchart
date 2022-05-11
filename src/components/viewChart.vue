@@ -1,13 +1,18 @@
 <template>
-  
+<div class="top100-p"></div>
 
-
-
+<SlideItem/>
+<SlideItem/>
 </template>
 
 <script>
+
 // import apiBoard from '@/api/board.js';
 import axios from 'axios';
+import {Buffer} from 'buffer';
+
+import SlideItem from './SildeItem.vue'
+
 
 export default {
 
@@ -15,14 +20,17 @@ export default {
     data() {
         return {
             modal : false,
+             slides: [
+    {
+      title: 'Slide #1',
+      content: 'Slide content.'
+    }
+  ]
         }
     },
-    computed : {
-      
-    },
-   
+  
+    components: {SlideItem },
       mounted() {
-      
       axios.get(``)
       .then(res=> { 
         console.log(res);
