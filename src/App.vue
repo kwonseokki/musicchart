@@ -1,25 +1,20 @@
 <template>
 
 <router-view name="header"  :loginStatus="loginStatus" :userInfo="userInfo" @logOut="loginStatus=false"></router-view>
-
 <router-view name="sidemenu"></router-view>
-=======
-
 <router-view :loginStatus="loginStatus"  @login="loginStatus=true" :userInfo="userInfo"></router-view>
-
 </template>
 
 <script>
 import ViewHeader from './components/ViewHeader.vue'
 import myPage from './components/myPage.vue'
-
 import SideMenu from './components/SideMenu.vue'
-
+import axios from 'axios'
+import {Buffer} from 'buffer'
 export default {
   name: 'App',
   data() {
     return {
-     limit:10,
      loginStatus:false,
      userInfo : JSON.parse(localStorage.getItem("userInfo")),
      
@@ -30,19 +25,42 @@ export default {
     myPage,
     SideMenu,
     myPage
-
   },
   methods : {
    
   },
    mounted() {
     
+           var client_id = '9fc19abe18d042a8b7b039d7bfc6d6cc';
+        var client_secret = 'e64adcc5ba4b416a8e207a6637a8a380';
+        
+         axios({
+        url: 'https://accounts.spotify.com/api/token',
+        method: 'post',
+        data: 
+           'grant_type=client_credentials'
+        ,
+        headers: {
+          'Accept':'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
+        },
+        auth: {
+          username: client_id,
+          password: client_secret
+        }
+      }).then(function(response) {
+          console.log(response);
+      }).catch(function(error) {
+        console.log(error)
+      });
     
     },
     created() {
       if(window.$cookies.isKey("accesToken")) {
         this.loginStatus=true
         
+ 
       }
     }
 }

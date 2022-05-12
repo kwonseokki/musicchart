@@ -25,10 +25,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-
-
-
-
-
 createApp(App).use(router, vueCookies).mount('#app')

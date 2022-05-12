@@ -8,18 +8,15 @@
 <SlideItem/>
 </div>
 
-<div class="top100-p"></div>
 
-<SlideItem/>
-<SlideItem/>
 
 </template>
 
 <script>
 
 // import apiBoard from '@/api/board.js';
-import axios from 'axios';
-import {Buffer} from 'buffer';
+
+
 
 import SlideItem from './SildeItem.vue'
 
@@ -41,16 +38,16 @@ export default {
   
     components: {SlideItem },
       mounted() {
-      axios.get(``)
-      .then(res=> { 
-        console.log(res);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(function(){
-        // 항상실행
-      })
+      // axios.get(``)
+      // .then(res=> { 
+      //   console.log(res);
+      // })
+      // .catch(err => {
+      //   console.log(err);
+      // })
+      // .then(function(){
+      //   // 항상실행
+      // })
   },
   updated() {
     
