@@ -6,14 +6,21 @@ import myPageDetail from './components/myPageDetail.vue';
 import doLogin from './components/doLogin.vue';
 import ViewHeader from './components/ViewHeader.vue';
 import doRegister from './components/doRegister.vue'
+<<<<<<< HEAD
 import SideMenu from './components/SideMenu.vue';
+=======
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
 const routes = [
   {
     path: "/",
     components: {
       default: viewChart,
       header: ViewHeader,
+<<<<<<< HEAD
       sidemenu:SideMenu
+=======
+      
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
     },
     props: true
   },
@@ -21,8 +28,12 @@ const routes = [
     path: "/search",
     components: {
       default: doSearch,
+<<<<<<< HEAD
       header: ViewHeader,
       sidemenu:SideMenu
+=======
+      header: ViewHeader
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
     },
     props: true
   },
@@ -32,7 +43,10 @@ const routes = [
     components: {
       default: myPage,
       header: ViewHeader,
+<<<<<<< HEAD
       sidemenu:SideMenu
+=======
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
     },
     children: [
       {

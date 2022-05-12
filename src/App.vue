@@ -1,7 +1,10 @@
 <template>
 
 <router-view name="header"  :loginStatus="loginStatus" :userInfo="userInfo" @logOut="loginStatus=false"></router-view>
+
 <router-view name="sidemenu"></router-view>
+=======
+
 <router-view :loginStatus="loginStatus"  @login="loginStatus=true" :userInfo="userInfo"></router-view>
 
 </template>
@@ -9,7 +12,9 @@
 <script>
 import ViewHeader from './components/ViewHeader.vue'
 import myPage from './components/myPage.vue'
+
 import SideMenu from './components/SideMenu.vue'
+
 export default {
   name: 'App',
   data() {
@@ -23,7 +28,9 @@ export default {
   components: {
     ViewHeader,
     myPage,
-    SideMenu
+    SideMenu,
+    myPage
+
   },
   methods : {
    
@@ -49,7 +56,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
+
   position: relative;
+
     background: linear-gradient(to bottom right, #121212,#282828);
   min-height:100vh;
 }

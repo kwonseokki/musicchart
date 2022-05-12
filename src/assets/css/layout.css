@@ -1,8 +1,17 @@
 ul,ol {list-style:none;}
 .head_title {text-align:left;} /*상단 타이틀 텍스트*/
+<<<<<<< HEAD
 
 
 .vueperslide__content-wrapper {background:#fff; border-radius:15px;}
 .vueperslides__bullets {display:none;}
 
 .navbar {height:60px; background:#fff;}
+=======
+.nav-toggle {border:none;} /*토글버튼*/
+.side-nav {background:#282828;}
+#navbar {background:#282828;}
+
+.vueperslide__content-wrapper {background:#fff; border-radius:15px;}
+.vueperslides__bullets {display:none;}
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127

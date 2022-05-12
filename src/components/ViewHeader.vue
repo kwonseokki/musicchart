@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <!-- <nav class="navbar navbar-dark fixed-top" id="navbar">
+=======
+  <nav class="navbar navbar-dark fixed-top" id="navbar">
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
   <div class="container-fluid">
     <a class="navbar-brand" href="#" @click="$router.push('/')">Chart Now</a>
     <button class="nav-toggle navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -26,8 +30,12 @@
       </div>
     </div>
   </div>
+<<<<<<< HEAD
 </nav> -->
 <span></span>
+=======
+</nav>
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
 </template>
 
 <script>
@@ -40,7 +48,17 @@ export default {
         }
     },
     methods : {
+<<<<<<< HEAD
        
+=======
+        toggleMenu : function() {
+            let tabMenu = document.querySelector('.offcanvas-end');
+            let tabMenuOverlay = document.querySelector('.offcanvas-backdrop');
+            
+            tabMenu.classList.remove("show");
+            tabMenuOverlay.classList.remove("show");
+        },
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
         logOut : function() {
           window.$cookies.remove("accesToken");
           this.$emit("logOut", false)
@@ -60,5 +78,8 @@ export default {
 
 <style>
 .user_picture {width:25px; height:25px; border-radius:50%;}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5660202dc19e7cabd32ae26a4d813ea1b46f4127
 </style>

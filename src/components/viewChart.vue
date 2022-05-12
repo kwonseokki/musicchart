@@ -1,4 +1,5 @@
 <template>
+
 <div class="item-container">
 <div class="top100-p"></div>
 <div class="top60-p"></div>
@@ -6,6 +7,12 @@
 <SlideItem/>
 <SlideItem/>
 </div>
+
+<div class="top100-p"></div>
+
+<SlideItem/>
+<SlideItem/>
+
 </template>
 
 <script>
@@ -56,5 +63,7 @@ export default {
 </script>
 
 <style>
+
 .item-container {width:85%; position:absolute; right:0;}
+
 </style>
