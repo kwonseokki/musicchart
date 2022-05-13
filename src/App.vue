@@ -17,7 +17,7 @@ export default {
     return {
      loginStatus:false,
      userInfo : JSON.parse(localStorage.getItem("userInfo")),
-     
+   
     }
   },
   components: {
@@ -31,12 +31,23 @@ export default {
   },
    mounted() {
     
-           var client_id = '9fc19abe18d042a8b7b039d7bfc6d6cc';
-        var client_secret = 'e64adcc5ba4b416a8e207a6637a8a380';
+   
+    
+    },
+    created() {
+      if(window.$cookies.isKey("accesToken")) {
+        this.loginStatus=true
         
-         axios({
+ 
+      }
+
+        let client_id = '9fc19abe18d042a8b7b039d7bfc6d6cc';
+        let client_secret = 'e64adcc5ba4b416a8e207a6637a8a380';
+        
+     const getSpotifyData = async() => {
+     await axios({
         url: 'https://accounts.spotify.com/api/token',
-        method: 'post',
+        method: 'POST',
         data: 
            'grant_type=client_credentials'
         ,
@@ -49,19 +60,40 @@ export default {
           username: client_id,
           password: client_secret
         }
-      }).then(function(response) {
-          console.log(response);
-      }).catch(function(error) {
-        console.log(error)
+      }).then(function(res) {
+          // console.log(res.data.access_token);
+          let access_token = res.data.access_token; // 토큰값 담은 변수
+          lelayToken(access_token);
+      }).catch(function(err) {
+        console.log(err)
       });
-    
-    },
-    created() {
-      if(window.$cookies.isKey("accesToken")) {
-        this.loginStatus=true
-        
- 
+
+       }
+
+
+      const lelayToken = (getAccessToken) => {
+        let access_token = getAccessToken;
+          axios({
+        url : 'https://api.spotify.com/v1/tracks',
+        method : 'GET',
+        headers : {
+          'Authorization': `Bearer ${access_token}`
+        },
+        }).then(function(res){
+          console.log(res);
+        }).catch(function(err){
+          console.log(err);
+        })
       }
+
+
+getSpotifyData()
+     
+
+    //axios끼리 값을 어케넘기지
+    //함수매개변수로 넘기기?
+    //아니면 axios내의 다른기능 찾기?
+    //어세스토큰 을 받고 리턴 
     }
 }
 
