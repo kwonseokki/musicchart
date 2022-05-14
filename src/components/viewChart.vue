@@ -1,12 +1,17 @@
 <template>
 
-<div class="item-container">
+<div class="container-mode-pc">
+  <div class="container-item">
 <div class="top100-p"></div>
 <div class="top60-p"></div>
-<h1>Track List</h1>
+<h2>음악 추천</h2>
 
-<SlideItem :trackData="trackData"/>
+<SlideItem 
+:trackData="trackData"
+:season="season"
+/>
 
+</div>
 </div>
 
 
@@ -56,13 +61,14 @@ export default {
    
   },
   props : {
-    trackData : Object
+    trackData : Object,
+    season : String
   }
 }
 </script>
 
 <style>
 
-.item-container {width:85%; position:absolute; right:0;}
+
 
 </style>

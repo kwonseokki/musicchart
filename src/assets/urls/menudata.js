@@ -1,8 +1,8 @@
 export default  [
-    {name:"HOME",
+    {name:"홈",
     url : '/'},
-    {name:"음악검색",
-    url : '/search'},
+    {name:"차트",
+    url : '/listchart'},
     {name:"myPage",
     url : '/myPage'},
 ]

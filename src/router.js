@@ -4,33 +4,34 @@ import viewChart from './components/viewChart.vue';
 import myPage from './components/myPage.vue';
 import myPageDetail from './components/myPageDetail.vue';
 import doLogin from './components/doLogin.vue';
-import ViewHeader from './components/ViewHeader.vue';
 import doRegister from './components/doRegister.vue'
-
 import SideMenu from './components/SideMenu.vue';
-
-
+import ListDetail from './components/ListDetail.vue';
+import ListChart from './components/ListChart.vue'
 const routes = [
   {
     path: "/",
     components: {
       default: viewChart,
-      header: ViewHeader,
       sidemenu:SideMenu
-
-      
-
     },
     props: true
   },
   {
+    path: "/listchart",
+    components: {
+      default: ListChart,
+      sidemenu:SideMenu
+    },
+    
+    props: true
+  },
+
+  {
     path: "/search",
     components: {
       default: doSearch,
-      header: ViewHeader,
       sidemenu:SideMenu,
-      header: ViewHeader
-
     },
     props: true
   },
@@ -39,10 +40,7 @@ const routes = [
     props: true,
     components: {
       default: myPage,
-      header: ViewHeader,
       sidemenu:SideMenu
-
-
     },
     children: [
       {
@@ -60,7 +58,24 @@ const routes = [
   {
     path: "/register",
     component: doRegister,
-  }
+  },
+  {
+    path:"/listdetail/:pageNum",
+    components: {
+      default:ListDetail,
+      sidemenu:SideMenu
+    },
+    props: true
+  },
+  {
+    path:"/listdetail",
+    components: {
+      default:ListDetail,
+      sidemenu:SideMenu
+    },
+    props: true
+  },
+
 ];
 
 

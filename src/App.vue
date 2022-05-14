@@ -1,13 +1,26 @@
 <template>
-<router-view name="header"  :loginStatus="loginStatus" :userInfo="userInfo" @logOut="loginStatus=false"></router-view>
+
 <router-view name="sidemenu"></router-view>
-<router-view :loginStatus="loginStatus" :trackData="trackData"  @login="loginStatus=true" :userInfo="userInfo"></router-view>
+<router-view 
+:loginStatus="loginStatus" 
+:trackData="trackData"
+:userInfo="userInfo"
+:season="this.season"
+:chartData="this.chartData"
+:chartData2="this.chartData2"  
+@login="loginStatus=true"
+@sendName="getName=$event; test(getName, access_token)"
+>
+</router-view>
+
+
 </template>
 
 <script>
-import ViewHeader from './components/ViewHeader.vue'
 import myPage from './components/myPage.vue'
 import SideMenu from './components/SideMenu.vue'
+import ListDetail from './components/ListDetail.vue'
+import ListChart from './components/ListChart.vue'
 import axios from 'axios'
 import {Buffer} from 'buffer'
 export default {
@@ -16,23 +29,57 @@ export default {
     return {
      loginStatus:false,
      userInfo : JSON.parse(localStorage.getItem("userInfo")),
-     trackData : [] 
+     trackData : [],
+     season : "",
+     access_token : "",
+     chartData : [],
+     chartData2 : [],
+     getName:""
     }
   },
   components: {
-    ViewHeader,
     myPage,
     SideMenu,
-    myPage
+    myPage,
+    ListDetail,
+    ListChart
   },
   methods : {
-   
+   test : function(getName, getaccess_token) {
+    
+    let access_token=getaccess_token;
+        let setName = getName;
+         axios({
+        url : 'https://api.spotify.com/v1/search',
+        method : 'GET',
+        headers : {
+          'Accept':'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Authorization': `Bearer ${access_token}`
+        },
+        params : {
+      "q": setName,
+      "type" : "track",
+     "limit": "1"
+}
+        }).then( res => {
+        console.log(res.data.tracks.items);
+        this.chartData2 =  res.data.tracks.items;
+       
+        }).catch(function(err){
+          console.log(err);
+        })
+
+   }
   },
    mounted() {
-    
-   
-    
+ 
     },
+
+    updated() {
+      console.log(this.getName)
+    },
+
     created() {
       if(window.$cookies.isKey("accesToken")) {
         this.loginStatus=true
@@ -40,7 +87,15 @@ export default {
 
         let client_id = '9fc19abe18d042a8b7b039d7bfc6d6cc';
         let client_secret = 'e64adcc5ba4b416a8e207a6637a8a380';
+        const date = new Date();
+        let season = date.getMonth();
         
+        if(season > 11 || season < 3) this.season="겨울";
+        else if(season < 12 && season > 8) this.season="가을";
+        else if(season < 9 && season > 5) this.season = "여름";
+        else if(season > 2 && season < 6) this.season = "봄";
+     
+
      const getSpotifyData = async() => {
      await axios({
         url: 'https://accounts.spotify.com/api/token',
@@ -57,14 +112,15 @@ export default {
           username: client_id,
           password: client_secret
         }
-      }).then(function(res) {
+      }).then((res)=> {
           // console.log(res.data.access_token);
           var access_token = res.data.access_token; // 토큰값 담은 변수
           lelayToken(access_token);
+          this.access_token=access_token;
+          console.log(access_token)
       }).catch(function(err) {
         console.log(err)
       });
-
        }
   
 
@@ -79,12 +135,14 @@ export default {
           'Authorization': `Bearer ${access_token}`
         },
         params : {
-    "q": "2022",
-    "type": "track",
-    "limit": "30"
+      "q": "봄",
+      "q": "사랑",
+      "type" : "track",
+     "limit": "30"
 }
         }).then( res => {
         console.log(res.data.tracks.items);
+        console.log(res);
        return this.trackData = res.data.tracks.items;
        
         }).catch(function(err){
@@ -92,9 +150,15 @@ export default {
         })
       }
 
-  
+      axios({
+        url:"http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=378bda961443f8868e2b26296c97edbf&format=json",
+      }).then((res)=>{
+        console.log(res.data.tracks)
+        this.chartData=res.data.tracks.track;
+        })
+
+
 getSpotifyData()
-     
 
     //axios끼리 값을 어케넘기지
     //함수매개변수로 넘기기?
@@ -112,9 +176,7 @@ getSpotifyData()
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
-
   position: relative;
-
     background: linear-gradient(to bottom right, #121212,#282828);
   min-height:100vh;
 }

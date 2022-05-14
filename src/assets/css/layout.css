@@ -3,8 +3,7 @@ ul,ol {list-style:none;}
 
 
 
-.vueperslide__content-wrapper {background:#fff; border-radius:15px;}
-.vueperslides__bullets {display:none;}
+
 
 .navbar {height:60px; background:#fff;}
 
@@ -12,6 +11,8 @@ ul,ol {list-style:none;}
 .side-nav {background:#282828;}
 #navbar {background:#282828;}
 
-.vueperslide__content-wrapper {background:#fff; border-radius:15px;}
-.vueperslides__bullets {display:none;}
+.container-mode-pc {width:85%; position:absolute; right:0;} /* PC버전일때 컨텐츠 영역크기 정의 */
+.container-item {width:90%; margin:0 auto;} /* 컨텐츠 영역 내부요소 넘어감 방지*/
+
+
 
