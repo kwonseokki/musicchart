@@ -4,8 +4,9 @@
 <div class="top100-p"></div>
 <div class="top60-p"></div>
 <h1>Track List</h1>
-<SlideItem/>
-<SlideItem/>
+
+<SlideItem :trackData="trackData"/>
+
 </div>
 
 
@@ -13,11 +14,7 @@
 </template>
 
 <script>
-
 // import apiBoard from '@/api/board.js';
-
-
-
 import SlideItem from './SildeItem.vue'
 
 
@@ -30,9 +27,11 @@ export default {
              slides: [
     {
       title: 'Slide #1',
-      content: 'Slide content.'
+      content: 'Slide content.',
+      src : 'img'
     }
-  ]
+  ],
+
         }
     },
   
@@ -55,6 +54,9 @@ export default {
   
   methods : {
    
+  },
+  props : {
+    trackData : Object
   }
 }
 </script>

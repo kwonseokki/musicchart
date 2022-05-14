@@ -1,8 +1,7 @@
 <template>
-
 <router-view name="header"  :loginStatus="loginStatus" :userInfo="userInfo" @logOut="loginStatus=false"></router-view>
 <router-view name="sidemenu"></router-view>
-<router-view :loginStatus="loginStatus"  @login="loginStatus=true" :userInfo="userInfo"></router-view>
+<router-view :loginStatus="loginStatus" :trackData="trackData"  @login="loginStatus=true" :userInfo="userInfo"></router-view>
 </template>
 
 <script>
@@ -17,7 +16,7 @@ export default {
     return {
      loginStatus:false,
      userInfo : JSON.parse(localStorage.getItem("userInfo")),
-   
+     trackData : [] 
     }
   },
   components: {
@@ -37,8 +36,6 @@ export default {
     created() {
       if(window.$cookies.isKey("accesToken")) {
         this.loginStatus=true
-        
- 
       }
 
         let client_id = '9fc19abe18d042a8b7b039d7bfc6d6cc';
@@ -62,31 +59,40 @@ export default {
         }
       }).then(function(res) {
           // console.log(res.data.access_token);
-          let access_token = res.data.access_token; // 토큰값 담은 변수
+          var access_token = res.data.access_token; // 토큰값 담은 변수
           lelayToken(access_token);
       }).catch(function(err) {
         console.log(err)
       });
 
        }
-
+  
 
       const lelayToken = (getAccessToken) => {
         let access_token = getAccessToken;
           axios({
-        url : 'https://api.spotify.com/v1/tracks',
+        url : 'https://api.spotify.com/v1/search',
         method : 'GET',
         headers : {
+          'Accept':'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
           'Authorization': `Bearer ${access_token}`
         },
-        }).then(function(res){
-          console.log(res);
+        params : {
+    "q": "2022",
+    "type": "track",
+    "limit": "30"
+}
+        }).then( res => {
+        console.log(res.data.tracks.items);
+       return this.trackData = res.data.tracks.items;
+       
         }).catch(function(err){
           console.log(err);
         })
       }
 
-
+  
 getSpotifyData()
      
 

@@ -9,8 +9,11 @@
   :slide-ratio="1 / 5.5"
   :dragging-distance="200"
   :breakpoints="{ 800: { visibleSlides: 2, slideMultiple: 2 } }">
-  <vueper-slide v-for="i in 10" :key="i" :title="i.toString()" />
+    
+  <vueper-slide v-for="(i,j) in trackData" :key="j" :src="trackData[j].album.images[1].url" :style="{'background-image':`url(${trackData[j].album.images[1].url})`}"/>
+
 </vueper-slides>
+
 </div>
 </template>
 
@@ -21,13 +24,16 @@ export default {
     name : "SlideItem",
     data() {
         return {
-
+          
         }
     },
-     components: { VueperSlides, VueperSlide,}
+     components: { VueperSlides, VueperSlide,},
+                props : {
+    trackData : Object
+  }
 }
 </script>
 
 <style>
-
+.vueperslide__content-wrapper {background:transparent;}
 </style>

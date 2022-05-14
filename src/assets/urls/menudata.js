@@ -1,5 +1,5 @@
 export default  [
-    {name:"차트",
+    {name:"HOME",
     url : '/'},
     {name:"음악검색",
     url : '/search'},
