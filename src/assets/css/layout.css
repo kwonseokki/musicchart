@@ -1,18 +1,103 @@
-ul,ol {list-style:none;}
-.head_title {text-align:left;} /*상단 타이틀 텍스트*/
+/* reset css */
+ul,
+ol {
+    list-style: none;
+}
+
+/* 공통 설정 */
+.head_title {
+    text-align: left;
+}
+
+/*상단 타이틀 텍스트*/
+.container-mode-pc {
+    width: 85%;
+    position: absolute;
+    right: 0;
+}
+
+/* PC버전일때 컨텐츠 영역크기 정의 */
+.container-item {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 컨텐츠 영역 내부요소 넘어감 방지*/
+
+/* 
+--------아래의 이름으로 검색해주세요 ----------
+
+doLogin - 로그인 컴포넌트
+doSearch - 검색 컴포넌트
+ListChart - 차트 리스트 컴포넌트
+ListDetail - 상세페이지 컴포넌트
+myPage - 마이페이지 컴포넌트
+myPageDetail - 마이페이지 상세컴포넌트
+SideMenu - 메뉴 네비게이션 컴포넌트 
+SlideItem - 슬라이드 컴포넌트
+viewChart - 루트 페이지 
+----------------------------------------------
+*/
 
 
+/* doLogin */
+/* doSearch */
+/* ListChart */
+/* ListDetail */
+.album_info {
+    display: flex;
+    align-items: center;
+}
 
+.album_info_detail {
+    text-align: left;
+    padding-left: 20px;
+}
 
+.audio_player {
+    width: 120px;
+    height: 40px;
+    background: #585858;
+    border-radius: 25px;
+    margin-top: 10px;
+}
 
-.navbar {height:60px; background:#fff;}
+/* myPage */
+.user_picture_big {
+    border-radius: 50%;
+}
 
-.nav-toggle {border:none;} /*토글버튼*/
-.side-nav {background:#282828;}
-#navbar {background:#282828;}
+/* myPageDetail */
+/* SideMenu */
+.nav_side {
+    height: 100%;
+    position: fixed;
+    background: #282828;
+    left: 0;
+    width: 15%;
+    z-index: 100;
+}
 
-.container-mode-pc {width:85%; position:absolute; right:0;} /* PC버전일때 컨텐츠 영역크기 정의 */
-.container-item {width:90%; margin:0 auto;} /* 컨텐츠 영역 내부요소 넘어감 방지*/
+.nav_logo {
+    height: 100px;
+    line-height: 100px;
+}
 
+.wrap_menu {
+    padding: 0;
+    margin: 0;
+}
 
+.wrap_menu li {
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
+.wrap_menu li:hover {
+    background: #1A1A1A;
+}
+
+/* SlideItem */
+/* viewChart */

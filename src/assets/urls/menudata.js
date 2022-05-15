@@ -1,3 +1,4 @@
+/* 메뉴 이름 및 url */
 export default  [
     {name:"홈",
     url : '/'},

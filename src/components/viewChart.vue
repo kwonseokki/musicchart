@@ -1,21 +1,23 @@
 <template>
-
-<div class="container-mode-pc">
-  <div class="container-item">
-<div class="top100-p"></div>
-<div class="top60-p"></div>
-<h2>음악 추천</h2>
-
-<SlideItem 
-:trackData="trackData"
-:season="season"
-/>
-
-</div>
-</div>
-
-
-
+    <div class="container-mode-pc">
+    
+        <div class="container-item">
+    
+            <div class="top100-p"></div>
+    
+            <div class="top60-p"></div>
+    
+            <h2>음악 추천</h2>
+    
+    
+    
+            <SlideItem :trackData="trackData" :season="season" />
+    
+    
+    
+        </div>
+    
+    </div>
 </template>
 
 <script>
@@ -25,50 +27,31 @@ import SlideItem from './SildeItem.vue'
 
 export default {
 
-    name : 'viewChart',
+    name: 'viewChart',
     data() {
         return {
-            modal : false,
-             slides: [
-    {
-      title: 'Slide #1',
-      content: 'Slide content.',
-      src : 'img'
-    }
-  ],
+            modal: false,
+            slides: [{
+                title: 'Slide #1',
+                content: 'Slide content.',
+                src: 'img'
+            }],
 
         }
     },
-  
-    components: {SlideItem },
-      mounted() {
-      // axios.get(``)
-      // .then(res=> { 
-      //   console.log(res);
-      // })
-      // .catch(err => {
-      //   console.log(err);
-      // })
-      // .then(function(){
-      //   // 항상실행
-      // })
-  },
-  updated() {
-    
-  },
-  
-  methods : {
-   
-  },
-  props : {
-    trackData : Object,
-    season : String
-  }
+
+    components: { SlideItem },
+
+    methods: {
+
+    },
+    props: {
+        trackData: Object,
+        season: String
+    }
 }
 </script>
 
 <style>
-
-
 
 </style>

@@ -5,8 +5,9 @@ import '@/assets/css/vertical-spacing.css'; /* css spacing */
 import '@/assets/css/layout.css'; /* css spacing */
 import vueCookies from "vue-cookies";
 import { initializeApp } from "firebase/app";
-import 'jquery';
-import { getAnalytics } from "firebase/analytics";
+
+
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries

@@ -5,6 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "local": "vue-cli-service serve --mode local",
     "lint": "vue-cli-service lint",
     "emul": "firebase emulators:start"
   },
@@ -36,6 +37,7 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "dotenv": "^16.0.1",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "node-sass": "^7.0.1",
