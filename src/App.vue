@@ -16,9 +16,10 @@ import SideMenu from './components/SideMenu.vue';
 import ListDetail from './components/ListDetail.vue';
 import ListChart from './components/ListChart.vue';
 import axios from 'axios';
+import fetchChartList from './api/chart.js';
 import { Buffer } from 'buffer';
 
-
+console.log(fetchChartList);
 
 export default {
     name: 'App',
@@ -136,13 +137,12 @@ export default {
             })
         }
 
-        axios({
-            url: "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=378bda961443f8868e2b26296c97edbf&format=json",
-        }).then((res) => {
-            this.chartData = res.data.tracks.track;
-        })
-
-
+        // axios({
+        //     url: "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=378bda961443f8868e2b26296c97edbf&format=json",
+        // }).then((res) => {
+        //     this.chartData = res.data.tracks.track;
+        // })
+        fetchChartList
         getSpotifyData()
 
         //axios끼리 값을 어케넘기지
