@@ -25,6 +25,7 @@ const firebaseConfig = {
   measurementId: "G-6LBVL257J2"
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 createApp(App).use(router, vueCookies).mount('#app')

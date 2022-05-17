@@ -5,8 +5,8 @@
     
     </router-view>
     
-    <router-view :loginStatus="loginStatus" :trackData="trackData" :userInfo="userInfo" :season="this.season" :chartData="this.chartData" :chartData2="this.chartData2" @login="loginStatus=true" @sendName="getName=$event; getChart(getName, access_token)">
-    
+    <router-view :loginStatus="loginStatus" :trackData="trackData" :userInfo="userInfo" :season="this.season" :chartData="chartData" :chartData2="this.chartData2" @login="loginStatus=true" @sendName="getName=$event; getChart(getName, access_token)">
+  
     </router-view>
 </template>
 
@@ -16,12 +16,13 @@ import SideMenu from './components/SideMenu.vue';
 import ListDetail from './components/ListDetail.vue';
 import ListChart from './components/ListChart.vue';
 import axios from 'axios';
-import fetchChartList from './api/chart.js';
 import { Buffer } from 'buffer';
+import {Test} from './api/chart.js'
 
-console.log(fetchChartList);
+
 
 export default {
+    
     name: 'App',
     data() {
         return {
@@ -71,8 +72,10 @@ export default {
 
         }
     },
-
+   
     created() {
+      
+         Test.methods.doTest()
         if (window.$cookies.isKey("accesToken")) {
             this.loginStatus = true
         }
@@ -104,7 +107,6 @@ export default {
                     password: client_secret
                 }
             }).then((res) => {
-                // console.log(res.data.access_token);
                 var access_token = res.data.access_token; // 토큰값 담은 변수
                 lelayToken(access_token);
                 this.access_token = access_token;
@@ -137,19 +139,16 @@ export default {
             })
         }
 
-        // axios({
-        //     url: "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=378bda961443f8868e2b26296c97edbf&format=json",
-        // }).then((res) => {
-        //     this.chartData = res.data.tracks.track;
-        // })
-        fetchChartList
+    
+    
         getSpotifyData()
-
         //axios끼리 값을 어케넘기지
         //함수매개변수로 넘기기?
         //아니면 axios내의 다른기능 찾기?
         //어세스토큰 을 받고 리턴 
-    }
+    },
+  mixins : [Test],
+  
 }
 </script>
 
