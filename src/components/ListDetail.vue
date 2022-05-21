@@ -2,10 +2,10 @@
     <div v-if="$route.params.pageNum">
     
         <div class="container-mode-pc">
-    
+            <div class="top100"></div>
             <div class="container-item wrap_album_info">
     
-                <div class="album_info top100">
+                <div class="album_info ">
     
                     <img class="album_info_image" :src="trackData[$route.params.pageNum].album.images[1].url" alt="">
     

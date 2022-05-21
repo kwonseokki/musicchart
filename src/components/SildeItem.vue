@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrap_slides">
     
         <h3 class="head_title">{{season}} 에 어울리는 노래</h3>
     
@@ -40,5 +40,6 @@ export default {
 </script>
 
 <style>
-
+.vueperslides__arrow {color: #222}
+.vueperslide__content-wrapper {box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;}
 </style>

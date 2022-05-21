@@ -1,17 +1,38 @@
 <template>
-    <div style="padding-top:100px">
-    
-        <div v-if="chartData2[0]">
-    
-            <p>{{chartData2[0].name}}</p>
-    
-            <p>{{chartData2[0].artists[0].name}}</p>
+    <div class="wrap_track_list">
 
-            <img :src="chartData2[0].album.images[1].url" alt="">
+     <div class="view_track_detail">
+        <div v-if="chartData2[0]">
+           <div class="track_detail_flex">
+     <img :src="chartData2[0].album.images[1].url" alt="">
+
+     <div class="track_info_txt">
+            <p>title : {{chartData2[0].name}}</p>
     
-        </div>
-   
+            <p>artist : {{chartData2[0].artists[0].name}}</p>
+    </div>
+           </div>
+   </div>
+
+           <div v-if="!(chartData2[0])">
+           <div class="track_detail_flex">
+     <img alt="" style="width:300px; height:300px">
+
+     <div class="track_info_txt">
+            <p>title : any title</p>
+    
+            <p>artist : any aritist</p>
+    </div>
+           </div>
+   </div>
+
+
+  </div>
+
+    <div class="view_track_list">
         <li v-for="(x,y) in chartData" :key="y" @click="$emit('sendName', chartData[y].name)">{{chartData[y].name}}</li>
+    </div>
+       
     
     
     

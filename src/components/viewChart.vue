@@ -7,7 +7,7 @@
     
             <div class="top60-p"></div>
     
-            <h2>음악 추천</h2>
+            <h2 class="home_head_title">음악 추천</h2>
     
     
     

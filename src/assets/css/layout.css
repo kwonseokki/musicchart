@@ -7,6 +7,7 @@ ol {
 /* 공통 설정 */
 .head_title {
     text-align: left;
+    color:#222;
 }
 
 /*상단 타이틀 텍스트*/
@@ -43,6 +44,14 @@ viewChart - 루트 페이지
 /* doLogin */
 /* doSearch */
 /* ListChart */
+.wrap_track_list {color:#222; position:relative; list-style:none;}
+.view_track_detail {position:fixed; width:85%; right:0; top:0; z-index:100; padding:15px; background:#F9FBFD;}
+.view_track_list {position:absolute; width:85%; right:0; top:500px;}
+
+.track_detail_flex {display:flex; flex-direction:row; width:90%; margin:0 auto;}
+.track_info_txt p {padding:10px; text-align:left;}
+.view_track_list li {width:90%; padding:20px; margin:0 auto; text-align:left; border-radius:15px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-top:10px;}
+.view_track_list li:hover {background:linear-gradient( to right, #8971ea, #7f72ea, #7574ea, #6a75e9, #5f76e8 ); cursor:pointer; color:#fff;}
 /* ListDetail */
 .album_info {
     display: flex;
@@ -52,6 +61,7 @@ viewChart - 루트 페이지
 .album_info_detail {
     text-align: left;
     padding-left: 20px;
+    color:#222;
 }
 
 .audio_player {
@@ -61,6 +71,8 @@ viewChart - 루트 페이지
     border-radius: 25px;
     margin-top: 10px;
 }
+
+.wrap_album_info { box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding:10px; height:auto;}
 
 /* myPage */
 .user_picture_big {
@@ -72,10 +84,12 @@ viewChart - 루트 페이지
 .nav_side {
     height: 100%;
     position: fixed;
-    background: #282828;
+    background: #fff;
+    color:#818181;
     left: 0;
     width: 15%;
-    z-index: 100;
+    z-index: 200;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .nav_logo {
@@ -93,11 +107,15 @@ viewChart - 루트 페이지
     line-height: 50px;
     cursor: pointer;
     transition: all 0.2s;
+    width:80%;
+    margin:0 auto;
+    border-radius:25px;
 }
 
 .wrap_menu li:hover {
-    background: #1A1A1A;
-}
+    background: linear-gradient( to right, #8971ea, #7f72ea, #7574ea, #6a75e9, #5f76e8 ); color:#fff; }
 
 /* SlideItem */
+.wrap_slides {}
 /* viewChart */
+.home_head_title {color:#222;}

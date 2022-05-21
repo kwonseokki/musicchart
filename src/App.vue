@@ -4,9 +4,8 @@
     
     
     </router-view>
-    
     <router-view :loginStatus="loginStatus" :trackData="trackData" :userInfo="userInfo" :season="this.season" :chartData="chartData" :chartData2="this.chartData2" @login="loginStatus=true" @sendName="getName=$event; getChart(getName, access_token)">
-  
+
     </router-view>
 </template>
 
@@ -17,9 +16,6 @@ import ListDetail from './components/ListDetail.vue';
 import ListChart from './components/ListChart.vue';
 import axios from 'axios';
 import { Buffer } from 'buffer';
-import {Test} from './api/chart.js'
-
-
 
 export default {
     
@@ -75,11 +71,8 @@ export default {
    
     created() {
       
-         Test.methods.doTest()
-        if (window.$cookies.isKey("accesToken")) {
-            this.loginStatus = true
-        }
-
+      
+    
        const client_id = process.env.VUE_APP_SPOTIFY_ID;
        const client_secret = process.env.VUE_APP_SPOTIFY_SECRET;
 
@@ -139,15 +132,18 @@ export default {
             })
         }
 
-    
+            axios({
+            url: "http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=378bda961443f8868e2b26296c97edbf&format=json",
+        }).then((res) => {
+         this.chartData = res.data.tracks.track;
+        }).catch((err)=>{
+            console.log(err);
+        })
+
     
         getSpotifyData()
-        //axios끼리 값을 어케넘기지
-        //함수매개변수로 넘기기?
-        //아니면 axios내의 다른기능 찾기?
-        //어세스토큰 을 받고 리턴 
     },
-  mixins : [Test],
+
   
 }
 </script>
@@ -160,7 +156,7 @@ export default {
     text-align: center;
     color: #fff;
     position: relative;
-    background: linear-gradient(to bottom right, #121212, #282828);
+    background:#F9FBFD;
     min-height: 100vh;
 }
 
