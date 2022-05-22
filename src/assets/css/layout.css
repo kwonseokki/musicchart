@@ -45,8 +45,10 @@ viewChart - 루트 페이지
 /* doSearch */
 /* ListChart */
 .wrap_track_list {color:#222; position:relative; list-style:none;}
-.view_track_detail {position:fixed; width:85%; right:0; top:0; z-index:100; padding:15px; background:#F9FBFD;}
-.view_track_list {position:absolute; width:85%; right:0; top:500px;}
+.view_track_detail {position:fixed; width:100%; right:0; top:0; z-index:100; padding:15px; background:#F9FBFD;}
+.view_track_list {position:absolute; width:100%; right:0; top:500px;}
+
+.track_detail_img {width:300px; height:300px;}
 
 .track_detail_flex {display:flex; flex-direction:row; width:90%; margin:0 auto;}
 .track_info_txt p {padding:10px; text-align:left;}

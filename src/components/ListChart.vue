@@ -1,10 +1,15 @@
 <template>
+  
     <div class="wrap_track_list">
 
      <div class="view_track_detail">
+   <div class="search_box">
+       <input type="text" name="" id=""><button>검색</button>
+   </div>
+
         <div v-if="chartData2[0]">
            <div class="track_detail_flex">
-     <img :src="chartData2[0].album.images[1].url" alt="">
+     <img :src="chartData2[0].album.images[1].url" alt="" class="track_detail_img">
 
      <div class="track_info_txt">
             <p>title : {{chartData2[0].name}}</p>
@@ -14,9 +19,10 @@
            </div>
    </div>
 
+<!--트랙 정보 없을때-->
            <div v-if="!(chartData2[0])">
            <div class="track_detail_flex">
-     <img alt="" style="width:300px; height:300px">
+     <img alt="" style="width:300px; height:300px" class="track_detail_img">
 
      <div class="track_info_txt">
             <p>title : any title</p>
@@ -50,7 +56,8 @@ export default {
     props: {
         chartData: Object,
         chartData2: Array
-    }
+    },
+
 
 }
 </script>

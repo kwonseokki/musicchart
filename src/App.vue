@@ -1,19 +1,13 @@
 <template>
-    <router-view name="sidemenu">
     
-    
-    
-    </router-view>
-    <router-view :loginStatus="loginStatus" :trackData="trackData" :userInfo="userInfo" :season="this.season" :chartData="chartData" :chartData2="this.chartData2" @login="loginStatus=true" @sendName="getName=$event; getChart(getName, access_token)">
-
+    <router-view  :trackData="trackData" :chartData="chartData" :chartData2="this.chartData2" @sendName="getName=$event; getChart(getName, access_token)">
     </router-view>
 </template>
 
 <script>
-import myPage from './components/myPage.vue';
-import SideMenu from './components/SideMenu.vue';
 import ListDetail from './components/ListDetail.vue';
 import ListChart from './components/ListChart.vue';
+
 import axios from 'axios';
 import { Buffer } from 'buffer';
 
@@ -23,9 +17,7 @@ export default {
     data() {
         return {
             loginStatus: false,
-            userInfo: JSON.parse(localStorage.getItem("userInfo")),
             trackData: [],
-            season: "",
             access_token: "",
             chartData: [],
             chartData2: [],
@@ -33,11 +25,9 @@ export default {
         }
     },
     components: {
-        myPage,
-        SideMenu,
-        myPage,
         ListDetail,
-        ListChart
+        ListChart,
+ 
     },
     methods: {
       /* getName : 트랙이름, getaccess_token : acces_token */
@@ -75,15 +65,6 @@ export default {
     
        const client_id = process.env.VUE_APP_SPOTIFY_ID;
        const client_secret = process.env.VUE_APP_SPOTIFY_SECRET;
-
-        const date = new Date();
-        let season = date.getMonth();
-
-        if (season > 11 || season < 3) this.season = "겨울";
-        else if (season < 12 && season > 8) this.season = "가을";
-        else if (season < 9 && season > 5) this.season = "여름";
-        else if (season > 2 && season < 6) this.season = "봄";
-
 
         const getSpotifyData = async () => {
             await axios({
